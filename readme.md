@@ -1,5 +1,7 @@
 # xkcdcolorpicker
 
+## Original README:
+
 a HTML5 color picker based on [xkcd](http://xkcd.com/)'s [color
 survey](http://blog.xkcd.com/2010/05/03/color-survey-results/).
 
@@ -11,6 +13,13 @@ script](https://github.com/h5bp/node-build-script) and some color similarity
 metrics I found [on a stackoverflow
 question](http://stackoverflow.com/questions/1313/followup-finding-an-accurate-distance-between-colors))
 
-## see it live
+### see it live
 
 here: http://xkcdcp.martinblech.com/
+
+## Fork README:
+
+Forked to add hex input support.  The grunt stuff doesn't work anymore, but just serving it
+unbundled works fine.
+
+Viewable here: http://klaash.github.io/xkcdcolorpicker/
