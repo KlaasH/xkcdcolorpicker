@@ -123,6 +123,10 @@
   width: 100%;
 }
 
+#params input[type="text"] {
+    width: 45%;
+}
+
 #params label {
   font-size: 14px;
   font-weight: bold;

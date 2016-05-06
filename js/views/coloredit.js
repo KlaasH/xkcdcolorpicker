@@ -2,9 +2,10 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'models/color',
     'collections/colors',
     'bootstrap/typeahead'
-], function($, _, Backbone, ColorCollection) {
+], function($, _, Backbone, ColorModel, ColorCollection) {
   'use strict';
 
   var ColorEditView = Backbone.View.extend({
@@ -22,6 +23,7 @@ define([
       this.nameInput.typeahead({
         source:typeaheadColorNames
       });
+      this.hexInput = this.$('#colorhex');
       this.rInput = this.$('#r');
       this.gInput = this.$('#g');
       this.bInput = this.$('#b');
@@ -37,6 +39,7 @@ define([
 
     events: {
       'change #colorname': 'colorNameChanged',
+      'change #colorhex': 'colorHexChanged',
       'change .hsl input': 'hslChanged',
       'change .rgb input': 'rgbChanged'
     },
@@ -45,6 +48,7 @@ define([
       if (!this.updating) {
         this.updating = true;
         this.nameInput.val(this.model.get('name'));
+        this.hexInput.val(this.model.get('hex'));
         if (!this.rgbUpdating) {
           this.rInput.val(this.model.get('r'));
           this.gInput.val(this.model.get('g'));
@@ -72,6 +76,21 @@ define([
         this.model.set(attribs);
       } else {
         this.nameInput.parent('.control-group').addClass('error');
+      }
+    },
+
+    colorHexChanged: function() {
+      var colorHex = this.hexInput.val(),
+          color = new ColorModel({hex: colorHex});
+      if (color) {
+        this.hexInput.parent('.control-group').removeClass('error');
+        var attribs = {
+          hex: color.get('hex'),
+          name: color.get('name')
+        };
+        this.model.set(attribs);
+      } else {
+        this.hexInput.parent('.control-group').addClass('error');
       }
     },
 

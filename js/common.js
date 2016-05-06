@@ -23,7 +23,7 @@ define([
   ColorModel.hexToName = hexToName;
 
   return {
-    currentColor: ColorsCollection.getByName('shit').clone()
-  }
+    currentColor: ColorsCollection.getByName('dirty purple').clone()
+  };
 
 });
