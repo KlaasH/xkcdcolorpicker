@@ -28,8 +28,7 @@ define([
 
     render: function() {
       var count = 75,
-          sorted = ColorCollection.getSortedIdsByDistanceTo(this.model,
-              'lowcost'),
+          sorted = ColorCollection.getSortedIdsByDistanceTo(this.model, 'cielab'),
           best = sorted.slice(0, count),
           worst = sorted.slice(-count);
       worst.reverse();
